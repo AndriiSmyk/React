@@ -1,8 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
+import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Header from "./components/Header/Header";
 import ProductList from "./components/ProductList/ProductList";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import AddProduct from "./components/AddProduct/AddProduct";
 
 function App() {
     const [products, setProducts] = useState(
@@ -15,15 +19,30 @@ function App() {
         ]
     )
 
-    const deleteProduct = (productId) =>{
-        const newProducts = products.filter(product => product.id!==productId);
+    const deleteProduct = (productId) => {
+        const newProducts = products.filter(product => product.id !== productId);
         setProducts(newProducts);
     }
 
     return (
         <div>
             <Header/>
-            <ProductList products={products} deleteProduct={deleteProduct}/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<ProductList products={products} deleteProduct={deleteProduct}/>}/>
+                    <Route path='/about' element={<About/>}/>
+                    <Route path='/contact' element={<Contact/>}/>
+                </Routes>
+            </BrowserRouter>
+
+
+
+
+
+
+
+
+
         </div>
     );
 }
