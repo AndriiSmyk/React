@@ -7,6 +7,7 @@ import ProductList from "./components/ProductList/ProductList";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import AddProduct from "./components/AddProduct/AddProduct";
+import EditProduct from "./components/EditProduct/EditProduct";
 
 function App() {
     const [products, setProducts] = useState(
@@ -32,6 +33,9 @@ function App() {
                     <Route path='/' element={<ProductList products={products} deleteProduct={deleteProduct}/>}/>
                     <Route path='/about' element={<About/>}/>
                     <Route path='/contact' element={<Contact/>}/>
+                    <Route path='/add' element={<AddProduct/>}/>
+                    <Route path='/edit' element={<EditProduct/>}/>
+
                 </Routes>
             </BrowserRouter>
 
